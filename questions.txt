@@ -1,0 +1,11 @@
+1.
+Le CICD est un processus de déploiement continue qui a pour avantage d'éviter les problèmes d'intégrations de nouvelles fonctionnalités. Il consiste en l'automatisation du déploiement des versions d'applications.
+Il permet une meilleur maitrise du cycle de vie des applications, évite les problèmes de merge et de compatibilté et facilite la mise en production.
+
+2.
+Le cours est très bien structuré, il complémente parfaitement le cours de fullstack. Il permet une bonne compréhension du domaine sombre du devops et de ses termes techniques. Il aurait été intéressant d'avoir en complément
+une liste des commandes docker utiles en CLI. Le format du cours CM/TP est approprié et permet d'appliquer le cours. Le rythme est très bon.
+
+3.
+La plus grande cathédrale du monde, Sla basilique St Pierre du Vatican est dotée d'une coupole de 137m de haut. Cette coupole est soutenue par 4 piles en marbre d'une circonférence de plus de 70m pour une hauteur de 28m. Débutée au 15eme siècle, sa construction aura durée
+plus de 200 ans et aura engagée les plus grands architectes de son temps. Il est possible de faire rentré entièrement une fusée Saturn V dans la coupole.
