@@ -1,0 +1,64 @@
+services:
+  database:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_DATABASE=superheroes
+    - MYSQL_USER=db_user
+    - MYSQL_PASSWORD=db_pass
+    volumes:
+    - database:/var/lib/mysql
+    networks:
+    - network
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u db_user --password=db_pass
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  back:
+    image: back
+    build:
+      context: java/
+      dockerfile: Dockerfile
+    container_name: back
+    depends_on:
+      database:
+        condition: service_healthy
+        restart: true
+    ports:
+    - 8448:8448
+    healthcheck:
+      test: curl http://localhost:8448/actuator/health
+      interval: 10s
+      timeout: 3s
+      retries: 30
+    environment:
+    - spring.datasource.platform=mysql
+    - spring.datasource.url=jdbc:mysql://mysql:3306/superheroes
+    - spring.datasource.username=db_user
+    - spring.datasource.password=db_pass
+    networks:
+    - network
+
+  front:
+    image: front
+    build:
+      context: angular/
+      dockerfile: Dockerfile
+    container_name: front
+    depends_on:
+      back: 
+        condition: service_healthy
+    ports:
+      - 8888:80
+    environment:
+      - BACKEND_URL=http://172.25.192.1:8080
+
+volumes:
+  database:
+
+networks:
+  network:
+
